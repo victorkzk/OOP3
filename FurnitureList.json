@@ -1,0 +1,24 @@
+[
+  {
+    "type": "Table",
+    "properties": {
+      "type": "GATELEG",
+      "material": "WOOD",
+      "length": 45,
+      "width": 44,
+      "height": 43,
+      "name": "Table"
+    }
+  },
+  {
+    "type": "Cabinetry",
+    "properties": {
+      "type": "HUTCH",
+      "material": "METAL",
+      "length": 3,
+      "width": 3,
+      "height": 5,
+      "name": "Cabinetry"
+    }
+  }
+]

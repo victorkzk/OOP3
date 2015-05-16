@@ -1,20 +1,23 @@
 package furniture;
 
-import java.awt.Color;
+import com.sun.javafx.scene.control.skin.ChoiceBoxSkin;
+import javafx.collections.FXCollections;
+import javafx.scene.control.ChoiceBox;
+
 import java.util.HashSet;
 
 abstract public class Furniture {
 
     public enum Material {
-        METAL, WOOD, PLASTIC, GLASS,
+        METAL, WOOD, PLASTIC, GLASS
     };
 
 
-    protected HashSet<Material> materials = new HashSet<Material>();
+    protected Material material;
     protected int length;
     protected int width;
     protected int height;
-    protected Color color;
+    protected String name;
 
     public Furniture(int length, int width, int height) {
         this.length = length;
@@ -22,13 +25,53 @@ abstract public class Furniture {
         this.height = height;
     }
 
-    public void addMaterial(Material material) {
-        materials.add(material);
+    static public void setMaterialList(ChoiceBox choiceBox) {
+        Material[] materials = Material.values();
+        choiceBox.setItems(FXCollections.observableArrayList(materials));
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    abstract public String[] getTypesList();
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return length;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setMaterial(ChoiceBox choiceBox) {
+        material = (Material)choiceBox.getValue();
+    }
+
+    public String getMaterial() {
+        return material.toString();
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public void choiceMaterial(ChoiceBox choiceBox) {
+        choiceBox.getSelectionModel().select(material);
+    }
+
+    abstract public void setTypesList(ChoiceBox choiceBox);
+    abstract public void setType(ChoiceBox choiceBox);
+    abstract public void choiceType(ChoiceBox choiceBox);
 }
